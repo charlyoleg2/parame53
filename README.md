@@ -10,7 +10,7 @@ Presentation
 This is the monorepo that contains two *javascript* packages:
 
 1. desi53: a library of 3D-parts using *geometrix*
-1. desi54: an other library of 3D-parts using *geometrix*
+2. desi53b: an other library of 3D-parts using *geometrix*
 
 The *UI* and *Cli* apps are generated automatically within *paxApps*.
 
