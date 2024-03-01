@@ -1,9 +1,9 @@
-// myPartP.ts
-// using functions for creating contours
+// myPartR.ts
+// 2D drawings only, without 3D export
 
 // step-1 : import from geometrix
 import type {
-	tContour,
+	//tContour,
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -13,12 +13,12 @@ import type {
 	//tSubDesign
 } from 'geometrix';
 import {
-	//point,
+	point,
 	//ShapePoint,
 	contour,
 	//contourCircle,
 	figure,
-	//degToRad,
+	degToRad,
 	//radToDeg,
 	ffix,
 	pNumber,
@@ -31,29 +31,35 @@ import {
 
 // step-2 : definition of the parameters and more (part-name, svg associated to each parameter, simulation parameters)
 const pDef: tParamDef = {
-	partName: 'myPartP',
+	partName: 'myPartR',
 	params: [
 		//pNumber(name, unit, init, min, max, step)
-		pNumber('A1', 'mm', 30, 10, 100, 1),
-		pNumber('B1', 'mm', 30, 10, 100, 1),
-		pNumber('C1', 'mm', 60, 10, 100, 1),
-		pNumber('A2', 'mm', 60, 10, 100, 1),
-		pNumber('B2', 'mm', 30, 10, 100, 1),
-		pNumber('C2', 'mm', 30, 10, 100, 1),
-		pNumber('A3', 'mm', 30, 10, 100, 1),
-		pNumber('B3', 'mm', 60, 10, 100, 1),
-		pNumber('C3', 'mm', 30, 10, 100, 1)
+		pNumber('P1', 'mm', 50, 10, 100, 1),
+		pNumber('B1', 'mm', 90, 10, 200, 1),
+		pNumber('H1', 'mm', 140, 80, 200, 1),
+		pNumber('a1', 'degree', 20, 1, 45, 1),
+		pNumber('M1', 'mm', 50, 10, 100, 1),
+		pNumber('M2', 'mm', 10, 4, 100, 1),
+		pNumber('C1', 'mm', 30, 10, 100, 1),
+		pNumber('C2', 'mm', 20, 4, 100, 1),
+		pNumber('S1', 'mm', 50, 10, 100, 1),
+		pNumber('S2', 'mm', 60, 5, 100, 1),
+		pNumber('S3', 'mm', 40, 5, 100, 1),
+		pNumber('S4', 'mm', 30, 5, 100, 1)
 	],
 	paramSvg: {
-		A1: 'myPartP_face.svg',
-		B1: 'myPartP_face.svg',
-		C1: 'myPartP_face.svg',
-		A2: 'myPartP_face.svg',
-		B2: 'myPartP_face.svg',
-		C2: 'myPartP_face.svg',
-		A3: 'myPartP_face.svg',
-		B3: 'myPartP_face.svg',
-		C3: 'myPartP_face.svg'
+		P1: 'myPartR_dress.svg',
+		B1: 'myPartR_dress.svg',
+		H1: 'myPartR_dress.svg',
+		a1: 'myPartR_dress.svg',
+		M1: 'myPartR_dress.svg',
+		M2: 'myPartR_dress.svg',
+		C1: 'myPartR_dress.svg',
+		C2: 'myPartR_dress.svg',
+		S1: 'myPartR_short.svg',
+		S2: 'myPartR_short.svg',
+		S3: 'myPartR_short.svg',
+		S4: 'myPartR_short.svg'
 	},
 	sim: {
 		tMax: 100,
@@ -69,34 +75,36 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 	rGeome.logstr += `${rGeome.partName} simTime: ${t}\n`;
 	try {
 		// step-4 : some preparation calculation
-		const heightMax = Math.max(param.A1 + param.B1, param.A2 + param.B2, param.A3 + param.B3);
-		const stepMax = Math.max(param.A1, param.C1, param.A2, param.C2, param.A3, param.C3);
-		const rectWith = 5 * stepMax;
-		const rectHeight = 2 * heightMax;
+		const a1b = Math.PI / 2 + degToRad(param.a1);
+		const a1c = Math.PI / 2 - degToRad(param.a1);
+		const a2b = degToRad(42);
+		const a3b = degToRad(45);
+		const h2b = param.H1 + 2.1 * param.M2;
 		// step-5 : checks on the parameter values
 		// step-6 : any logs
-		rGeome.logstr += `myPartP: rectangle ${ffix(rectWith)} x ${ffix(rectHeight)} mm\n`;
+		rGeome.logstr += `myPartR: dress ${ffix(param.H1)} x ${ffix(param.B1)} mm\n`;
 		// step-7 : drawing of the figures
-		// function definition
-		const ctrFunc = function (aA: number, aB: number, aC: number): tContour {
-			const rCtr = contour(0, 0)
-				.addSegStrokeA(aC, 0)
-				.addSegStrokeA((2 * aC) / 3, aB)
-				.addPointA(aC / 3, aB)
-				.addSegArc(aA / 2, true, true)
-				.closeSegStroke();
-			return rCtr;
-		};
 		// fig1
-		const ctrRect = contour(0, 0)
-			.addSegStrokeA(rectWith, 0)
-			.addSegStrokeA(rectWith, rectHeight)
-			.addSegStrokeA(0, rectHeight)
+		const p1 = point(param.P1 / 2, param.H1).translatePolar(degToRad(75), 1.6 * param.M2);
+		const p2 = point(-param.P1 / 2, param.H1).translatePolar(degToRad(105), 1.6 * param.M2);
+		const ctrDress = contour(0, 0)
+			.addSegStrokeA(param.B1 / 2, 0)
+			.addPointA(param.P1 / 2, param.H1)
+			.addSegArc3(a1b, true)
+			.addSegStrokeRP(-a2b, param.M1)
+			.addSegStrokeRP(a3b, param.M2)
+			.addSegStrokeA(p1.cx, p1.cy)
+			.addSegStrokeA(param.C1 / 2, h2b)
+			.addSegStrokeA(param.C1 * 0.35, h2b - 0.5 * param.C2)
+			.addSegStrokeA(0, h2b - param.C2)
+			.addSegStrokeA(-param.C1 * 0.35, h2b - 0.5 * param.C2)
+			.addSegStrokeA(-param.C1 / 2, h2b)
+			.addSegStrokeA(p2.cx, p2.cy)
+			.addSegStrokeA(-param.P1 / 2, param.H1)
+			.addPointA(-param.B1 / 2, 0)
+			.addSegArc3(a1c, false)
 			.closeSegStroke();
-		fig1.addMain(ctrRect);
-		fig1.addMain(ctrFunc(param.A1, param.B1, param.C1).translate(stepMax / 2, heightMax / 2));
-		fig1.addMain(ctrFunc(param.A2, param.B2, param.C2).translate(2 * stepMax, heightMax / 2));
-		fig1.addMain(ctrFunc(param.A3, param.B3, param.C3).translate(3.5 * stepMax, heightMax / 2));
+		fig1.addMain(ctrDress);
 		// final figure list
 		rGeome.fig = {
 			face1: fig1
@@ -127,7 +135,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		rGeome.sub = {};
 		// step-10 : final log message
 		// finalize
-		rGeome.logstr += 'myPartP drawn successfully!\n';
+		rGeome.logstr += 'myPartR drawn successfully!\n';
 		rGeome.calcErr = false;
 	} catch (emsg) {
 		rGeome.logstr += emsg as string;
@@ -138,8 +146,8 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 
 // step-11 : definiton of the final object that gathers the precedent object and function
 const myPartRDef: tPageDef = {
-	pTitle: 'My Part-P',
-	pDescription: 'Using a function for creating contours',
+	pTitle: 'My Part-R',
+	pDescription: '2D drawings only, without 3D export',
 	pDef: pDef,
 	pGeom: pGeom
 };
