@@ -89,6 +89,11 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			.addSegStrokeA(x3, y3)
 			.closeSegStroke();
 		fig1.addDynamics(ctrTriangle);
+		const ctrTriangle2 = contour(0, 0, 'blue')
+			.addSegStrokeA(-x3, 0)
+			.addSegStrokeA(-x3, -y3)
+			.closeSegStroke();
+		fig1.addDynamics(ctrTriangle2);
 		// points
 		const p0 = point(R1, 0, ShapePoint.eBigSquare);
 		const p1 = point(x3, 0, ShapePoint.eTwoTri);
