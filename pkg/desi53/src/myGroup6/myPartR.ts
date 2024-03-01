@@ -111,10 +111,10 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		};
 		// step-8 : recipes of the 3D construction
 		//const designName = rGeome.partName;
-		rGeome.vol = {
-			extrudes: [],
-			volumes: []
-		};
+		//rGeome.vol = {
+		//	extrudes: [],
+		//	volumes: []
+		//};
 		// step-9 : optional sub-design parameter export
 		// sub-design
 		rGeome.sub = {};
