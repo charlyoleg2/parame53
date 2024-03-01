@@ -24,9 +24,9 @@ import {
 	pNumber,
 	//pCheckbox,
 	//pDropdown,
-	initGeom,
-	EExtrude,
-	EBVolume
+	//EExtrude,
+	//EBVolume,
+	initGeom
 } from 'geometrix';
 
 // step-2 : definition of the parameters and more (part-name, svg associated to each parameter, simulation parameters)
@@ -110,25 +110,10 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			face1: fig1
 		};
 		// step-8 : recipes of the 3D construction
-		const designName = rGeome.partName;
+		//const designName = rGeome.partName;
 		rGeome.vol = {
-			extrudes: [
-				{
-					outName: `subpax_${designName}`,
-					face: `${designName}_face1`,
-					extrudeMethod: EExtrude.eLinearOrtho,
-					length: 1,
-					rotate: [0, 0, 0],
-					translate: [0, 0, 0]
-				}
-			],
-			volumes: [
-				{
-					outName: `pax_${designName}`,
-					boolMethod: EBVolume.eIdentity,
-					inList: [`subpax_${designName}`]
-				}
-			]
+			extrudes: [],
+			volumes: []
 		};
 		// step-9 : optional sub-design parameter export
 		// sub-design
