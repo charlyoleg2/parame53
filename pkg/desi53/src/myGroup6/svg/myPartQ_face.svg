@@ -3,8 +3,8 @@
 
 <svg
    width="318.73129"
-   height="241.63483"
-   viewBox="0 0 84.330988 63.932548"
+   height="262.07898"
+   viewBox="0 0 84.330988 69.34173"
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (1:1.3.2+202311252150+091e20ef0f)"
@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="0.52916667"
+     inkscape:zoom="1.0583333"
      inkscape:cx="396.85039"
-     inkscape:cy="561.25984"
+     inkscape:cy="258.89764"
      inkscape:window-width="1370"
      inkscape:window-height="836"
      inkscape:window-x="0"
@@ -34,6 +34,12 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs1">
+    <rect
+       x="356.60434"
+       y="374.49435"
+       width="55.718506"
+       height="51.876232"
+       id="rect3" />
     <rect
        x="183.73524"
        y="350.3851"
@@ -85,20 +91,17 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-15.301302,-26.66263)">
+     transform="translate(-15.301302,-21.25345)">
     <rect
        style="fill:#ffffff;stroke:#ffffff;stroke-width:0.264583;stroke-linejoin:bevel"
        id="rect8"
        width="84.066406"
-       height="63.667969"
+       height="69.077148"
        x="15.433593"
-       y="26.794922" />
-    <circle
-       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:bevel"
-       id="path1"
-       cx="45.326172"
-       cy="49.355465"
-       r="18.097656" />
+       y="21.385742"
+       inkscape:export-filename="myPartQ_face.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <circle
        style="fill:none;stroke:#ffd5d5;stroke-width:0.264583;stroke-linejoin:bevel"
        id="path1-5"
@@ -109,10 +112,6 @@
        style="fill:none;stroke:#ff6600;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#ArrowWide)"
        d="m 63.423828,49.355464 6.1556,-18.097656"
        id="path2" />
-    <path
-       style="fill:none;stroke:#ff00ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 45.326172,49.355464 12.382812,0.0426 -0.256079,-13.476417 -12.126733,13.433819"
-       id="path4" />
     <path
        style="fill:none;stroke:#cccccc;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="M 63.423828,49.355464 V 79.891601"
@@ -133,5 +132,46 @@
          x="183.73438"
          y="363.36136"
          id="tspan1">D1</tspan></text>
+    <rect
+       style="fill:none;stroke:#ffd5d5;stroke-width:0.264583;stroke-linejoin:bevel"
+       id="rect2-5"
+       width="25.955603"
+       height="25.222948"
+       x="57.23748"
+       y="36.743992"
+       ry="5.9033203"
+       rx="5.9033203" />
+    <circle
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:bevel"
+       id="path1"
+       cx="45.326172"
+       cy="49.355465"
+       r="18.097656" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:bevel"
+       id="rect2"
+       width="25.955603"
+       height="25.222948"
+       x="32.348377"
+       y="36.743992"
+       ry="5.9033203"
+       rx="5.9033203" />
+    <path
+       style="fill:none;stroke:#ff00ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 45.326172,49.355464 12.382812,0.0426 -0.256079,-13.476417 -12.126733,13.433819"
+       id="path4" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-72.890627,-75.125002)"
+       id="text2"
+       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect3)"><tspan
+         x="356.60352"
+         y="387.47073"
+         id="tspan2">R2</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker7)"
+       d="m 24.94043,28.490235 8.583986,9.044921"
+       id="path8"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>
