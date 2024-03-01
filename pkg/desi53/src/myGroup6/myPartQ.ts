@@ -100,6 +100,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		const p2 = point(x3, -y3, ShapePoint.eTri1);
 		const p3 = point(-x3, -y3, ShapePoint.eTri2);
 		const p4 = point(-x3, y3, ShapePoint.eTri3);
+		fig1.addPoint(p0);
 		fig1.addPoint(p1);
 		fig1.addPoint(p2);
 		fig1.addPoint(p3);
