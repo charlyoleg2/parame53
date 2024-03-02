@@ -18,7 +18,7 @@ import {
 	contour,
 	//contourCircle,
 	figure,
-	degToRad,
+	//degToRad,
 	//radToDeg,
 	ffix,
 	pNumber,
