@@ -48,7 +48,7 @@ const pDef: tParamDef = {
 		pNumber('He2', 'mm', 40, 1, 200, 1),
 		pNumber('Pe1', 'mm', 50, 1, 300, 1),
 		pNumber('Pe2', 'mm', 50, 1, 300, 1),
-		pNumber('pN', 'profiles', 10, 1, 20, 1),
+		pNumber('pN', 'profiles', 10, 1, 20, 1)
 	],
 	paramSvg: {
 		ai1: 'myPartS_profile.svg',
@@ -65,7 +65,7 @@ const pDef: tParamDef = {
 		He2: 'myPartS_profile.svg',
 		Pe1: 'myPartS_profile.svg',
 		Pe2: 'myPartS_profile.svg',
-		pN: 'myPartS_profile.svg',
+		pN: 'myPartS_profile.svg'
 	},
 	sim: {
 		tMax: 100,
