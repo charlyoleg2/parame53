@@ -43,9 +43,9 @@ const pDef: tParamDef = {
 		pNumber('C1', 'mm', 30, 10, 100, 1),
 		pNumber('C2', 'mm', 20, 4, 100, 1),
 		pNumber('S1', 'mm', 50, 10, 100, 1),
-		pNumber('S2', 'mm', 60, 5, 100, 1),
+		pNumber('S2', 'mm', 25, 5, 100, 1),
 		pNumber('S3', 'mm', 40, 5, 100, 1),
-		pNumber('S4', 'mm', 30, 5, 100, 1)
+		pNumber('S4', 'mm', 28, 5, 100, 1)
 	],
 	paramSvg: {
 		P1: 'myPartR_dress.svg',
@@ -71,7 +71,8 @@ const pDef: tParamDef = {
 // step-3 : definition of the function that creates from the parameter-values the figures and construct the 3D
 function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 	const rGeome = initGeom(pDef.partName + suffix);
-	const fig1 = figure();
+	const figDress = figure();
+	const figShort = figure();
 	rGeome.logstr += `${rGeome.partName} simTime: ${t}\n`;
 	try {
 		// step-4 : some preparation calculation
@@ -84,9 +85,12 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		// step-6 : any logs
 		rGeome.logstr += `myPartR: dress ${ffix(param.H1)} x ${ffix(param.B1)} mm\n`;
 		// step-7 : drawing of the figures
-		// fig1
+		// figDress
 		const p1 = point(param.P1 / 2, param.H1).translatePolar(degToRad(75), 1.6 * param.M2);
-		const p2 = point(-param.P1 / 2, param.H1).translatePolar(degToRad(105), 1.6 * param.M2);
+		const p2a = point(-param.P1 / 2, param.H1);
+		const p2 = p2a.translatePolar(degToRad(105), 1.6 * param.M2);
+		const p2b = p2a.translatePolar(-Math.PI / 2 - a2b, param.M1);
+		const p2c = p2b.translatePolar(Math.PI / 2 + a3b, param.M2);
 		const ctrDress = contour(0, 0)
 			.addSegStrokeA(param.B1 / 2, 0)
 			.addPointA(param.P1 / 2, param.H1)
@@ -95,19 +99,39 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			.addSegStrokeRP(a3b, param.M2)
 			.addSegStrokeA(p1.cx, p1.cy)
 			.addSegStrokeA(param.C1 / 2, h2b)
-			.addSegStrokeA(param.C1 * 0.35, h2b - 0.5 * param.C2)
+			.addSegStrokeA(param.C1 * 0.35, h2b - 0.7 * param.C2)
 			.addSegStrokeA(0, h2b - param.C2)
-			.addSegStrokeA(-param.C1 * 0.35, h2b - 0.5 * param.C2)
+			.addSegStrokeA(-param.C1 * 0.35, h2b - 0.7 * param.C2)
 			.addSegStrokeA(-param.C1 / 2, h2b)
 			.addSegStrokeA(p2.cx, p2.cy)
+			.addSegStrokeA(p2c.cx, p2c.cy)
+			.addSegStrokeA(p2b.cx, p2b.cy)
+			.addSegStrokeA(p2a.cx, p2a.cy)
 			.addSegStrokeA(-param.P1 / 2, param.H1)
 			.addPointA(-param.B1 / 2, 0)
 			.addSegArc3(a1c, false)
 			.closeSegStroke();
-		fig1.addMain(ctrDress);
+		figDress.addMain(ctrDress);
+		// figShort
+		const sp1 = point(param.S1 / 2, 0);
+		const sp2 = sp1.translatePolar(degToRad(-80), param.S3);
+		const sp3 = sp2.translatePolar(degToRad(190), param.S4);
+		const sp1b = point(-param.S1 / 2, 0);
+		const sp2b = sp1b.translatePolar(degToRad(-100), param.S3);
+		const sp3b = sp2b.translatePolar(degToRad(-10), param.S4);
+		const ctrShort = contour(sp1.cx, sp1.cy)
+			.addSegStrokeA(sp2.cx, sp2.cy)
+			.addSegStrokeA(sp3.cx, sp3.cy)
+			.addSegStrokeA(0, -param.S2)
+			.addSegStrokeA(sp3b.cx, sp3b.cy)
+			.addSegStrokeA(sp2b.cx, sp2b.cy)
+			.addSegStrokeA(sp1b.cx, sp1b.cy)
+			.closeSegStroke();
+		figShort.addMain(ctrShort);
 		// final figure list
 		rGeome.fig = {
-			face1: fig1
+			faceDress: figDress,
+			faceShort: figShort
 		};
 		// step-8 : recipes of the 3D construction
 		//const designName = rGeome.partName;
