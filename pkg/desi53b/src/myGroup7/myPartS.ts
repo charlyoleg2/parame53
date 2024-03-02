@@ -3,7 +3,7 @@
 
 // step-1 : import from geometrix
 import type {
-	//tContour,
+	tContour,
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -14,7 +14,7 @@ import type {
 } from 'geometrix';
 import {
 	point,
-	ShapePoint,
+	//ShapePoint,
 	contour,
 	//contourCircle,
 	figure,
@@ -92,16 +92,35 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		rGeome.logstr += `myPartS: Li1 ${ffix(param.Li1)}  Li2 ${ffix(param.Li2)} mm\n`;
 		// step-7 : drawing of the figures
 		// fig1
-		const p1 = point(param.Pe1, param.He1, ShapePoint.eBigSquare);
-		const p2 = point(param.Pe2, param.He2, ShapePoint.eBigSquare);
-		fig1.addPoint(p1);
-		fig1.addPoint(p2);
-		const ctrProfile1 = contour(0, 0)
-			.addSegStrokeA(param.Li1, 0)
-			.addPointA(p2.cx, p2.cy)
-			.addSegArc(param.Ri1, false, false)
-			.closeSegStroke();
-		fig1.addMain(ctrProfile1);
+		const fCtrProfile = function (
+			ai: number,
+			Rai: number,
+			Li: number,
+			Ri: number,
+			Rqi: number,
+			He: number,
+			Pe: number
+		): tContour {
+			//const p1 = point(Pe, He);
+			const p2 = point(Pe, He);
+			const rCtrP = contour(0, 0)
+				.addSegStrokeA(Li, 0)
+				.addPointA(p2.cx, p2.cy)
+				.addSegArc(Ri, false, false)
+				.closeSegStroke();
+			return rCtrP;
+		};
+		fig1.addMain(
+			fCtrProfile(
+				param.ai1,
+				param.Rai1,
+				param.Li1,
+				param.Ri1,
+				param.Rqi1,
+				param.He1,
+				param.Pe1
+			)
+		);
 		// final figure list
 		rGeome.fig = {
 			profile1: fig1
