@@ -1,5 +1,5 @@
-// myPartO.ts
-// a bubble to illustrate the double-arcs
+// myPartS.ts
+// a serie of blade profiles
 
 // step-1 : import from geometrix
 import type {
@@ -31,25 +31,41 @@ import {
 
 // step-2 : definition of the parameters and more (part-name, svg associated to each parameter, simulation parameters)
 const pDef: tParamDef = {
-	partName: 'myPartO',
+	partName: 'myPartS',
 	params: [
 		//pNumber(name, unit, init, min, max, step)
-		pNumber('L1', 'mm', 40, 1, 200, 1),
-		pNumber('P1X', 'mm', 0, -50, 200, 1),
-		pNumber('P1Y', 'mm', 30, 1, 200, 1),
-		pNumber('P2X', 'mm', 40, 1, 200, 1),
-		pNumber('P2Y', 'mm', 30, 1, 200, 1),
-		pNumber('A1', 'degree', 60, -30, 210, 1),
-		pNumber('A2', 'degree', 120, -30, 210, 1)
+		pNumber('ai1', 'degree', -20, -90, 0, 1),
+		pNumber('ai2', 'degree', -20, -90, 0, 1),
+		pNumber('Li1', 'mm', 120, 10, 300, 1),
+		pNumber('Li2', 'mm', 120, 10, 300, 1),
+		pNumber('Ri1', 'mm', 1000, 500, 2000, 1),
+		pNumber('Ri2', 'mm', 1000, 500, 2000, 1),
+		pNumber('Rai1', 'mm', 20, 1, 50, 1),
+		pNumber('Rai2', 'mm', 20, 1, 50, 1),
+		pNumber('Rqi1', 'mm', 4, 1, 30, 1),
+		pNumber('Rqi2', 'mm', 4, 1, 30, 1),
+		pNumber('He1', 'mm', 40, 1, 200, 1),
+		pNumber('He2', 'mm', 40, 1, 200, 1),
+		pNumber('Pe1', 'mm', 50, 1, 300, 1),
+		pNumber('Pe2', 'mm', 50, 1, 300, 1),
+		pNumber('pN', 'profiles', 10, 1, 20, 1),
 	],
 	paramSvg: {
-		L1: 'myPartO_face.svg',
-		P1X: 'myPartO_face.svg',
-		P1Y: 'myPartO_face.svg',
-		P2X: 'myPartO_face.svg',
-		P2Y: 'myPartO_face.svg',
-		A1: 'myPartO_face.svg',
-		A2: 'myPartO_face.svg'
+		ai1: 'myPartS_profile.svg',
+		ai2: 'myPartS_profile.svg',
+		Li1: 'myPartS_profile.svg',
+		Li2: 'myPartS_profile.svg',
+		Ri1: 'myPartS_profile.svg',
+		Ri2: 'myPartS_profile.svg',
+		Rai1: 'myPartS_profile.svg',
+		Rai2: 'myPartS_profile.svg',
+		Rqi1: 'myPartS_profile.svg',
+		Rqi2: 'myPartS_profile.svg',
+		He1: 'myPartS_profile.svg',
+		He2: 'myPartS_profile.svg',
+		Pe1: 'myPartS_profile.svg',
+		Pe2: 'myPartS_profile.svg',
+		pN: 'myPartS_profile.svg',
 	},
 	sim: {
 		tMax: 100,
@@ -65,34 +81,30 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 	rGeome.logstr += `${rGeome.partName} simTime: ${t}\n`;
 	try {
 		// step-4 : some preparation calculation
-		const a1 = degToRad(param.A1);
-		const a2 = degToRad(param.A2);
-		const Lmax = Math.max(param.L1, param.P2X) - Math.min(0, param.P1X);
 		// step-5 : checks on the parameter values
-		if (param.P1X > param.P2X) {
-			throw `err791: P1X ${param.P1X} is too large compare to P2X ${param.P2X}`;
+		if (param.Rai1 > param.He1) {
+			throw `err795: Rai1 ${param.Rai1} is too large compare to He1 ${param.He1}`;
+		}
+		if (param.ai1 < param.ai2) {
+			throw `err796: ai1 ${param.ai1} is too negative compare to ai2 ${param.ai2}`;
 		}
 		// step-6 : any logs
-		rGeome.logstr += `myPartO: Lmax ${ffix(Lmax)} mm\n`;
+		rGeome.logstr += `myPartS: Li1 ${ffix(param.Li1)}  Li2 ${ffix(param.Li2)} mm\n`;
 		// step-7 : drawing of the figures
 		// fig1
-		const p1 = point(param.P1X, param.P1Y, ShapePoint.eBigSquare);
-		const p2 = point(param.P2X, param.P2Y, ShapePoint.eBigSquare);
+		const p1 = point(param.Pe1, param.He1, ShapePoint.eBigSquare);
+		const p2 = point(param.Pe2, param.He2, ShapePoint.eBigSquare);
 		fig1.addPoint(p1);
 		fig1.addPoint(p2);
-		const ctrBubble = contour(0, 0)
-			.addSegStrokeA(param.L1, 0)
+		const ctrProfile1 = contour(0, 0)
+			.addSegStrokeA(param.Li1, 0)
 			.addPointA(p2.cx, p2.cy)
-			.addSegArc3(Math.PI + a2, false)
-			.addPointA(p1.cx, p1.cy)
-			.addSeg2Arcs(a2, a1)
-			.addPointA(0, 0)
-			.addSegArc3(Math.PI + a1, true);
-		//ctrBubble.closeSegStroke();
-		fig1.addMain(ctrBubble);
+			.addSegArc(param.Ri1, false, false)
+			.closeSegStroke();
+		fig1.addMain(ctrProfile1);
 		// final figure list
 		rGeome.fig = {
-			face1: fig1
+			profile1: fig1
 		};
 		// step-8 : recipes of the 3D construction
 		const designName = rGeome.partName;
@@ -100,7 +112,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			extrudes: [
 				{
 					outName: `subpax_${designName}`,
-					face: `${designName}_face1`,
+					face: `${designName}_profile1`,
 					extrudeMethod: EExtrude.eLinearOrtho,
 					length: 1,
 					rotate: [0, 0, 0],
@@ -120,7 +132,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		rGeome.sub = {};
 		// step-10 : final log message
 		// finalize
-		rGeome.logstr += 'myPartO drawn successfully!\n';
+		rGeome.logstr += 'myPartS drawn successfully!\n';
 		rGeome.calcErr = false;
 	} catch (emsg) {
 		rGeome.logstr += emsg as string;
@@ -130,12 +142,12 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 }
 
 // step-11 : definiton of the final object that gathers the precedent object and function
-const myPartODef: tPageDef = {
-	pTitle: 'My Part-O',
-	pDescription: 'A bubble for illustration double-arcs',
+const myPartSDef: tPageDef = {
+	pTitle: 'My Part-S',
+	pDescription: 'a serie of blade profiles',
 	pDef: pDef,
 	pGeom: pGeom
 };
 
 // step-12 : export the final object
-export { myPartODef };
+export { myPartSDef };
