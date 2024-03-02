@@ -22,7 +22,8 @@
 		"colorBg": "DarkCyan",
 		"colorTitle": "AquaMarine",
 		"libs": [
-			"desi53"
+			"desi53",
+			"desi53b"
 		]
 	},
 	"scripts": {
@@ -36,6 +37,12 @@
 		"desi53:clean": "npm -w desi53 run clean",
 		"desi53:version": "npm -w desi53 version patch",
 		"desi53:publish": "npm -w desi53 publish --provenance",
+		"desi53b:dev": "npm -w desi53b run dev",
+		"desi53b:ci": "npm -w desi53b run ci",
+		"desi53b:svgo": "npm -w desi53b run svgo",
+		"desi53b:clean": "npm -w desi53b run clean",
+		"desi53b:version": "npm -w desi53b version patch",
+		"desi53b:publish": "npm -w desi53b publish --provenance",
 		"paxScr:cirun": "npm -w paxScr run cirun",
 		"paxScr:brun": "npm -w paxScr run brun",
 		"paxScr:clean": "npm -w paxScr run clean",
@@ -45,14 +52,14 @@
 		"desiXY-ui:preview": "npm -w desiXY-ui run preview",
 		"desiXY-cli:build": "npm -w desiXY-cli run build",
 		"desiXY-cli:clean": "npm -w desiXY-cli run clean",
-		"dev": "run-p desi53:dev desiXY-ui:dev",
-		"ci": "run-s desi53:ci paxScr:brun desiXY-ui:build desiXY-cli:build",
-		"svgo": "run-s desi53:svgo",
+		"dev": "run-p desi53:dev desi53b:dev desiXY-ui:dev",
+		"ci": "run-s desi53:ci desi53b:ci paxScr:brun desiXY-ui:build desiXY-cli:build",
+		"svgo": "run-s desi53:svgo desi53b:svgo",
 		"clean-root": "shx rm -fr tmp output output2",
-		"clean": "run-s clean-root desi53:clean paxScr:clean desiXY-ui:clean desiXY-cli:clean",
+		"clean": "run-s clean-root desi53:clean desi53b:clean paxScr:clean desiXY-ui:clean desiXY-cli:clean",
 		"preview": "run-s desiXY-ui:preview",
-		"versions": "run-s desi53:version",
-		"gh-publish": "run-s desi53:publish",
+		"versions": "run-s desi53:version desi53b:version",
+		"gh-publish": "run-s desi53:publish desi53b:publish",
 		"ls-workspaces": "npm -ws exec -c pwd"
 	},
 	"workspaces": [
