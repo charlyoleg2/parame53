@@ -40,10 +40,10 @@ const pDef: tParamDef = {
 	partName: 'myPartU',
 	params: [
 		//pNumber(name, unit, init, min, max, step)
-		pNumber('D1', 'mm', 1, 1, 200, 1),
-		pNumber('D2', 'mm', 1, 1, 200, 1),
-		pNumber('E1', 'mm', 1, 1, 200, 1),
-		pNumber('L1', 'mm', 1, 1, 200, 1)
+		pNumber('D1', 'mm', 60, 1, 200, 1),
+		pNumber('D2', 'mm', 30, 1, 200, 1),
+		pNumber('E1', 'mm', 5, 1, 200, 1),
+		pNumber('L1', 'mm', 40, 1, 200, 1)
 	],
 	paramSvg: {
 		D1: 'myPartU_side.svg',
@@ -87,16 +87,16 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		rGeome.logstr += prefixLog(geomA1.logstr, paramA1.getPartNameSuffix());
 		// myPartA-2
 		const paramA2 = designParam(myPartADef.pDef, 'ref2');
-		paramA2.setVal('D1', param.D1);
+		paramA2.setVal('D1', param.D2);
 		paramA2.setVal('E1', param.E1);
 		paramA2.setVal('L1', param.L1);
 		const geomA2 = myPartADef.pGeom(0, paramA2.getParamVal(), paramA2.getSuffix());
 		checkGeom(geomA2);
 		rGeome.logstr += prefixLog(geomA2.logstr, paramA2.getPartNameSuffix());
 		// step-7b : drawing of the figures
-		figSide.mergeFigure(geomA1.fig.faceSide.translate(2 * param.L1, 0));
-		figSide.mergeFigure(geomA2.fig.faceSide.translate(0 * param.L1, 0));
-		figSide.mergeFigure(geomA2.fig.faceSide.translate(4 * param.L1, 0));
+		figSide.mergeFigure(geomA1.fig.faceSide.translate(0, 2 * param.L1));
+		figSide.mergeFigure(geomA2.fig.faceSide.translate(0, 0 * param.L1));
+		figSide.mergeFigure(geomA2.fig.faceSide.translate(0, 4 * param.L1));
 		figSection.mergeFigure(geomA1.fig.faceSection);
 		figSection.mergeFigure(geomA2.fig.faceSection);
 		// final figure list

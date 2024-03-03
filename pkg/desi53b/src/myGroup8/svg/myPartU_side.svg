@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="0.74835468"
-     inkscape:cx="396.87064"
-     inkscape:cy="259.23537"
+     inkscape:zoom="1.0583333"
+     inkscape:cx="240"
+     inkscape:cy="597.16535"
      inkscape:window-width="1370"
      inkscape:window-height="836"
      inkscape:window-x="0"
@@ -170,7 +170,10 @@
        width="102.95723"
        height="81.061775"
        x="21.587473"
-       y="23.067978" />
+       y="23.067978"
+       inkscape:export-filename="myPartU_side.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <circle
        style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:bevel"
        id="path1"
@@ -223,25 +226,25 @@
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-19.875639,4.5685727)"
        id="text4"
-       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect4)"><tspan
+       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect4);display:inline"><tspan
          x="502.875"
          y="212.8262"
-         id="tspan2">D1</tspan></text>
+         id="tspan1">D1</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-33.493659,-14.802286)"
        id="text5"
-       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5)"><tspan
+       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect5);display:inline"><tspan
          x="490.14844"
          y="288.67581"
-         id="tspan3">D2</tspan></text>
+         id="tspan2">D2</tspan></text>
     <path
        style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide)"
-       d="m 55.982422,89.472114 v 8.209647"
+       d="m 55.997959,89.523569 v 8.20965"
        id="path5" />
     <path
        style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide-5)"
-       d="M 55.982422,86.165613 V 81.259095"
+       d="m 55.997959,86.217069 v -4.90652"
        id="path5-8" />
     <path
        style="fill:none;stroke:#0000ff;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#ArrowWide-5-3)"
@@ -255,10 +258,10 @@
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-2.1485964,0.47439683)"
        id="text6"
-       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect6);fill:#0000ff"><tspan
+       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect6);display:inline;fill:#0000ff"><tspan
          x="222.22461"
          y="364.34964"
-         id="tspan4">E1</tspan></text>
+         id="tspan3">E1</tspan></text>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-2.4772557,-19.130081)"
@@ -266,6 +269,6 @@
        style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect6-5);display:inline;fill:#0000ff"><tspan
          x="222.22461"
          y="364.34964"
-         id="tspan5">E1</tspan></text>
+         id="tspan4">E1</tspan></text>
   </g>
 </svg>

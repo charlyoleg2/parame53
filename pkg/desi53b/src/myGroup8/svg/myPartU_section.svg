@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
-     inkscape:zoom="0.74835468"
-     inkscape:cx="396.87064"
-     inkscape:cy="259.23537"
+     inkscape:zoom="1.0583333"
+     inkscape:cx="240"
+     inkscape:cy="597.16535"
      inkscape:window-width="1370"
      inkscape:window-height="836"
      inkscape:window-x="0"
@@ -392,21 +392,24 @@
        width="120.23827"
        height="99.832031"
        x="12.570312"
-       y="136.53516" />
+       y="136.53516"
+       inkscape:export-filename="myPartU_section.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:bevel"
        id="rect8"
        width="19.723505"
        height="58.208332"
-       x="29.391798"
-       y="92.083046" />
+       x="60.318108"
+       y="146.75912" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:bevel"
        id="rect8-6"
        width="19.723505"
        height="52.916672"
-       x="29.524088"
-       y="94.728874" />
+       x="60.318108"
+       y="149.40495" />
     <rect
        style="fill:none;stroke:#000000;stroke-width:0.264583;stroke-linejoin:bevel"
        id="rect8-6-6"
@@ -529,11 +532,11 @@
        id="path2-6-6-9-5" />
     <path
        style="fill:none;stroke:#b3b3b3;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 60.318107,200.02208 v 27.9992"
+       d="m 60.318107,204.96745 v 23.05383"
        id="path2-6-6-9-59" />
     <path
        style="fill:none;stroke:#b3b3b3;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 80.041612,199.95638 v 27.99919"
+       d="m 80.041612,204.96745 v 22.98812"
        id="path2-6-6-9-1" />
     <path
        style="fill:none;stroke:#b3b3b3;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -567,7 +570,7 @@
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,-17.195312,-25.851562)"
        id="text8"
-       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect9)"><tspan
+       style="font-size:14.6667px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect9);display:inline"><tspan
          x="171.86523"
          y="954.293"
          id="tspan7">L1</tspan></text>
