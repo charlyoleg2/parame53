@@ -110,21 +110,21 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			inherits: [
 				{
 					outName: `inpax_${designName}_A1`,
-					subdesign: 'pax_myPartTref1', // pax_myPartUref1 U overwritten with T in myPartT
+					subdesign: 'pax_myPartAref1', // pax_myPartAref1 U might be overwritten with T in myPartT
 					subgeom: geomA1,
 					rotate: [0, 0, 0],
 					translate: [0, 0, 2 * param.L1]
 				},
 				{
 					outName: `inpax_${designName}_A21`,
-					subdesign: 'pax_myPartTref2', // pax_myPartUref2
+					subdesign: 'pax_myPartAref2', // pax_myPartAref2
 					subgeom: geomA2,
 					rotate: [0, 0, 0],
 					translate: [0, 0, 0]
 				},
 				{
 					outName: `inpax_${designName}_A22`,
-					subdesign: 'pax_myPartTref2', // pax_myPartUref1
+					subdesign: 'pax_myPartAref2', // pax_myPartAref1
 					subgeom: geomA2,
 					rotate: [0, 0, 0],
 					translate: [0, 0, 4 * param.L1]

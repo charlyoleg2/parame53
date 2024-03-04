@@ -5,5 +5,5 @@
 import { myPartADef as myPartTDef } from 'desi51';
 myPartTDef.pTitle = 'my Part-T';
 myPartTDef.pDescription = 'a re-export of myPartADef with few modifications';
-myPartTDef.pDef.partName = 'myPartT';
+//myPartTDef.pDef.partName = 'myPartT'; // Overwrite partName works but has consequences
 export { myPartTDef };
