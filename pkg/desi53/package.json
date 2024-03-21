@@ -46,12 +46,12 @@
 		"clean": "shx rm -fr dist dist2 node_modules"
 	},
 	"dependencies": {
-		"geometrix": "^0.5.24"
+		"geometrix": "^0.5.25"
 	},
 	"devDependencies": {
-		"@types/node": "^20.11.28",
-		"@typescript-eslint/eslint-plugin": "^7.2.0",
-		"@typescript-eslint/parser": "^7.2.0",
+		"@types/node": "^20.11.30",
+		"@typescript-eslint/eslint-plugin": "^7.3.1",
+		"@typescript-eslint/parser": "^7.3.1",
 		"esbuild": "^0.20.2",
 		"eslint": "^8.57.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -60,7 +60,7 @@
 		"shx": "^0.3.4",
 		"svgo": "^3.2.0",
 		"tsup": "^8.0.2",
-		"typescript": "^5.4.2",
+		"typescript": "^5.4.3",
 		"vitest": "^1.4.0"
 	},
 	"exports": {
