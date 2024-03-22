@@ -74,6 +74,15 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 	try {
 		// step-4 : some preparation calculation
 		const roof_angle = Math.atan2(param.H2, param.W1 / 2);
+		const roofV = param.E2 / Math.cos(roof_angle);
+		//const roofH = param.E2 / Math.sin(roof_angle);
+		const roofEndH = Math.cos(Math.PI / 2 - roof_angle) * param.E2;
+		const roofPlusH = param.L1 - roofEndH;
+		const roofPlusV = roofPlusH * Math.tan(roof_angle);
+		const roofPlusLength = Math.sqrt(roofPlusH ** 2 + roofPlusV ** 2);
+		const roofInnerLength = Math.sqrt(param.H2 ** 2 + (param.W1 / 2) ** 2);
+		const roofTopLength = Math.sqrt(roofV ** 2 - param.E2 ** 2);
+		const roofLength = roofTopLength + roofInnerLength + roofPlusLength;
 		// step-5 : checks on the parameter values
 		if (2 * param.E1 > param.W1) {
 			throw `err295: E1 ${param.E1} is too large compare to W1 ${param.W1}`;
@@ -81,9 +90,13 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		if (param.E1 > param.T1) {
 			throw `err296: E1 ${param.E1} is too large compare to T1 ${param.T1}`;
 		}
+		if (roofPlusH < 0) {
+			throw `err297: L1 ${param.L1} is too small compare to roof_angle ${ffix(radToDeg(roof_angle))} and E2 ${param.E2}`;
+		}
 		// step-6 : any logs
 		rGeome.logstr += `myPartW: height ${ffix(param.H1 + param.H2)} m\n`;
 		rGeome.logstr += `myPartW: roof-angle ${ffix(radToDeg(roof_angle))} degree\n`;
+		rGeome.logstr += `myPartW: one-side roof-length ${ffix(roofLength)} m\n`;
 		// step-7 : drawing of the figures
 		const ctrRect = function (ox: number, oy: number, lx: number, ly: number): tContour {
 			const rCtr = contour(ox, oy)
@@ -113,6 +126,14 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		);
 		figTop.addSecond(ctrRect(0, -param.L2, param.W1 / 2 + param.L1, param.T1 + 2 * param.L2));
 		// figFace
+		const ctrRoof = contour(-param.W1 / 2 - roofPlusH, param.H1 - roofPlusV)
+			.addSegStrokeA(0, param.H1 + param.H2)
+			.addSegStrokeA(param.W1 / 2 + roofPlusH, param.H1 - roofPlusV)
+			.addSegStrokeRP(Math.PI / 2 - roof_angle, param.E2)
+			.addSegStrokeA(0, param.H1 + param.H2 + roofV)
+			.addSegStrokeRP(Math.PI + roof_angle, roofLength)
+			.closeSegStroke();
+		figFace.addMain(ctrRoof);
 		figFace.addSecond(ctrRect(-param.W1 / 2, 0, param.W1, param.H1));
 		// final figure list
 		rGeome.fig = {
