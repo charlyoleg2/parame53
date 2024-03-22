@@ -3,7 +3,7 @@
 
 // step-1 : import from geometrix
 import type {
-	//tContour,
+	tContour,
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -85,20 +85,35 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		rGeome.logstr += `myPartW: height ${ffix(param.H1 + param.H2)} m\n`;
 		rGeome.logstr += `myPartW: roof-angle ${ffix(radToDeg(roof_angle))} degree\n`;
 		// step-7 : drawing of the figures
+		const ctrRect = function (ox: number, oy: number, lx: number, ly: number): tContour {
+			const rCtr = contour(ox, oy)
+				.addSegStrokeR(lx, 0)
+				.addSegStrokeR(0, ly)
+				.addSegStrokeR(-lx, 0)
+				.closeSegStroke();
+			return rCtr;
+		};
 		// figTop
-		const ctrWallOuter = contour(-param.W1 / 2, 0)
-			.addSegStrokeA(param.W1 / 2, 0)
-			.addSegStrokeA(param.W1 / 2, param.T1)
-			.addSegStrokeA(-param.W1 / 2, param.T1)
-			.closeSegStroke();
-		figTop.addMain(ctrWallOuter);
+		figTop.addMain(ctrRect(-param.W1 / 2, 0, param.W1, param.T1));
+		figTop.addMain(
+			ctrRect(
+				-param.W1 / 2 + param.E1,
+				param.E1,
+				param.W1 - 2 * param.E1,
+				param.T1 - 2 * param.E1
+			)
+		);
+		figTop.addSecond(
+			ctrRect(
+				-param.W1 / 2 - param.L1,
+				-param.L2,
+				param.W1 / 2 + param.L1,
+				param.T1 + 2 * param.L2
+			)
+		);
+		figTop.addSecond(ctrRect(0, -param.L2, param.W1 / 2 + param.L1, param.T1 + 2 * param.L2));
 		// figFace
-		const ctrWallFace = contour(-param.W1 / 2, 0)
-			.addSegStrokeA(param.W1 / 2, 0)
-			.addSegStrokeA(param.W1 / 2, param.H1)
-			.addSegStrokeA(-param.W1 / 2, param.H1)
-			.closeSegStroke();
-		figFace.addMain(ctrWallFace);
+		figFace.addSecond(ctrRect(-param.W1 / 2, 0, param.W1, param.H1));
 		// final figure list
 		rGeome.fig = {
 			faceTop: figTop,
