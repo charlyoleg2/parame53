@@ -8,9 +8,10 @@ import type {
 	tParamVal,
 	tGeom,
 	//tExtrude,
+	//tSubInst,
+	//tSubDesign,
+	//tVec3,
 	tPageDef
-	//tSubInst
-	//tSubDesign
 } from 'geometrix';
 import {
 	//designParam,
@@ -29,6 +30,7 @@ import {
 	//pDropdown,
 	pSectionSeparator,
 	initGeom,
+	transform3d,
 	EExtrude,
 	EBVolume
 } from 'geometrix';
@@ -38,15 +40,15 @@ const pDef: tParamDef = {
 	partName: 'myPartW',
 	params: [
 		//pNumber(name, unit, init, min, max, step)
-		pNumber('W1', 'mm', 10, 1, 50, 0.1),
-		pNumber('T1', 'mm', 15, 1, 50, 0.1),
-		pNumber('E1', 'mm', 0.2, 0.05, 0.5, 0.01),
+		pNumber('W1', 'm', 10, 1, 50, 0.1),
+		pNumber('T1', 'm', 15, 1, 50, 0.1),
+		pNumber('E1', 'm', 0.2, 0.05, 0.5, 0.01),
 		pSectionSeparator('roof'),
-		pNumber('L1', 'mm', 1, 0, 2, 0.1),
-		pNumber('L2', 'mm', 1, 0, 2, 0.1),
-		pNumber('H1', 'mm', 4, 1, 10, 0.1),
-		pNumber('H2', 'mm', 4, 1, 10, 0.1),
-		pNumber('E2', 'mm', 0.2, 0.05, 0.5, 0.01)
+		pNumber('L1', 'm', 1, 0, 2, 0.1),
+		pNumber('L2', 'm', 1, 0, 2, 0.1),
+		pNumber('H1', 'm', 4, 1, 10, 0.1),
+		pNumber('H2', 'm', 4, 1, 10, 0.1),
+		pNumber('E2', 'm', 0.2, 0.05, 0.5, 0.01)
 	],
 	paramSvg: {
 		W1: 'myPartW_top.svg',
@@ -142,6 +144,10 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		};
 		// step-8 : recipes of the 3D construction
 		const designName = rGeome.partName;
+		const tm = transform3d(); // helper for calculating the rotation and translation of the roof
+		tm.addRotation(Math.PI / 2, 0, 0);
+		tm.addTranslation(0, param.L2 + param.T1, 0);
+		tm.addRotation(0, 0, Math.PI / 4);
 		rGeome.vol = {
 			extrudes: [
 				{
@@ -149,7 +155,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 					face: `${designName}_faceTop`,
 					extrudeMethod: EExtrude.eLinearOrtho,
 					length: param.H1,
-					rotate: [0, 0, 0],
+					rotate: [0, 0, Math.PI / 4],
 					translate: [0, 0, 0]
 				},
 				{
@@ -157,8 +163,8 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 					face: `${designName}_faceFace`,
 					extrudeMethod: EExtrude.eLinearOrtho,
 					length: param.T1 + 2 * param.L2,
-					rotate: [0, 0, 0],
-					translate: [0, 0, 0]
+					rotate: tm.getRotation(),
+					translate: tm.getTranslation()
 				}
 			],
 			volumes: [
