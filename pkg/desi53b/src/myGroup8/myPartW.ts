@@ -22,8 +22,9 @@ import {
 	contour,
 	//contourCircle,
 	ctrRectangle,
+	ctrRectRot,
 	figure,
-	//degToRad,
+	degToRad,
 	radToDeg,
 	ffix,
 	pNumber,
@@ -62,7 +63,7 @@ const pDef: tParamDef = {
 		E2: 'myPartW_face.svg'
 	},
 	sim: {
-		tMax: 100,
+		tMax: 360,
 		tStep: 0.5,
 		tUpdate: 500 // every 0.5 second
 	}
@@ -79,6 +80,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		const roof_angle = Math.atan2(param.H2, param.W1 / 2);
 		const roofLength = (param.W1 / 2 + param.L1) / Math.cos(roof_angle);
 		const roofInnerLength = roofLength - param.E2 * Math.tan(roof_angle);
+		const aDyn = degToRad(t);
 		// step-5 : checks on the parameter values
 		if (2 * param.E1 > param.W1) {
 			throw `err295: E1 ${param.E1} is too large compare to W1 ${param.W1}`;
@@ -99,6 +101,16 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 				param.E1,
 				param.W1 - 2 * param.E1,
 				param.T1 - 2 * param.E1
+			)
+		);
+		figTop.addDynamics(ctrRectRot(-param.W1 / 2, 0, param.W1, param.T1, aDyn));
+		figTop.addDynamics(
+			ctrRectRot(
+				-param.W1 / 2 + param.E1 * Math.sqrt(2) * Math.cos(Math.PI / 4 + aDyn),
+				param.E1 * Math.sqrt(2) * Math.sin(Math.PI / 4 + aDyn),
+				param.W1 - 2 * param.E1,
+				param.T1 - 2 * param.E1,
+				aDyn
 			)
 		);
 		figTop.addSecond(
