@@ -5,24 +5,38 @@ Parame53
 Presentation
 ------------
 
-*Parame53* constains the *geometrix design* library *desi53*, which  belongs to the *parametrix* tutorial. The file structure of *parame53* can be used as template for creating other *geometrix design libraries*.
+*Parame53* is the top-monorepo of the design-libraries *desi53* ans *desi53b*.
+Those two design-libraries are part of the *parametrix* tutorial.
 
-This is the monorepo that contains two *javascript* packages:
+This repo is a designer-repository using [parametrix](https://charlyoleg2.github.io/parametrix/).
+The file structure of *parame53* can be used as template for creating other *design-libraries*.
+In particular, if you want to create several *design-libraries* in one mono-repository.
+
+This monorepo contains two *javascript* packages:
 
 1. desi53: a library of 3D-parts using *geometrix*
 2. desi53b: an other library of 3D-parts using *geometrix*
 
-The *UI* and *Cli* apps are generated automatically within *paxApps*.
+The *UI* and *Cli* apps are generated automatically with [paxApps](https://github.com/charlyoleg2/parame_paxApps).
 
 A public instance of *desiXY-ui* is available on that [github-page](https://charlyoleg2.github.io/parame53/).
 The *code source* is available on [github](https://github.com/charlyoleg2/parame53).
+
+
+Links
+-----
+
+- [desi53-ui](https://charlyoleg2.github.io/parame53/) : public instance of the UI
+- [sources](https://github.com/charlyoleg2/parame53) : git-repository
+- [desi53-pkg](https://www.npmjs.com/package/desi53) : desi53 as npm-package
+- [desi53b-pkg](https://www.npmjs.com/package/desi53b) : desi53b as npm-package
 
 
 Prerequisite
 ------------
 
 - [node](https://nodejs.org) version 20.10.0 or higher
-- [npm](https://docs.npmjs.com/cli/v7/commands/npm) version 10.2.4 or higher
+- [npm](https://docs.npmjs.com/cli/v7/commands/npm) version 10.5.0 or higher
 
 
 Getting started
@@ -49,4 +63,15 @@ npm -w desi53 run build
 npm -w desiXY-ui run dev
 ```
 
+Publish a new release
+---------------------
 
+```bash
+npm run versions
+vim scr/patchPaxApps.patch
+git diff
+git commit -am 'increment sub versions'
+npm version patch
+git push
+git push origin v0.5.6
+```
