@@ -5,7 +5,7 @@ Parame53
 Presentation
 ------------
 
-*Parame53* is the top-monorepo of the design-libraries *desi53* ans *desi53b*.
+*Parame53* is the top-monorepo of the design-libraries *desi53* and *desi53b*.
 Those two design-libraries are part of the *parametrix* tutorial.
 
 This repo is a designer-repository using [parametrix](https://charlyoleg2.github.io/parametrix/).
