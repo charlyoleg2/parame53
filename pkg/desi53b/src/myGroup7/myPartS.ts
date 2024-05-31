@@ -4,6 +4,7 @@
 // step-1 : import from geometrix
 import type {
 	tContour,
+	//tOuterInner,
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -155,7 +156,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		const sHe = Array.from(oLen, (_, idx) => sqrt(param.He1, param.He2, idx / param.pN));
 		const sPe = Array.from(oLen, (_, idx) => sqrt(param.Pe1, param.Pe2, idx / param.pN));
 		for (let i = 0; i < param.pN; i++) {
-			figFlat.addMain(
+			figFlat.addMainO(
 				fCtrProfile(sai[i], sRai[i], sLi[i], sRi[i], sRqi[i], sHe[i], sPe[i]).translate(
 					0,
 					-i * param.Li1
@@ -169,7 +170,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		// add each individual profile
 		for (let i = 0; i < param.pN; i++) {
 			const figI = figure();
-			figI.addMain(fCtrProfile(sai[i], sRai[i], sLi[i], sRi[i], sRqi[i], sHe[i], sPe[i]));
+			figI.addMainO(fCtrProfile(sai[i], sRai[i], sLi[i], sRi[i], sRqi[i], sHe[i], sPe[i]));
 			rGeome.fig[`prf${i.toString().padStart(2, '0')}`] = figI;
 		}
 		// step-8 : recipes of the 3D construction

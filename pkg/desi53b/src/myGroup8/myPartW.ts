@@ -4,6 +4,7 @@
 // step-1 : import from geometrix
 import type {
 	//tContour,
+	//tOuterInner,
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -95,15 +96,15 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 		rGeome.logstr += `myPartW: one-side roof-length ${ffix(roofLength)} m\n`;
 		// step-7 : drawing of the figures
 		// figTop
-		figTop.addMain(ctrRectangle(-param.W1 / 2, 0, param.W1, param.T1));
-		figTop.addMain(
+		figTop.addMainOI([
+			ctrRectangle(-param.W1 / 2, 0, param.W1, param.T1),
 			ctrRectangle(
 				-param.W1 / 2 + param.E1,
 				param.E1,
 				param.W1 - 2 * param.E1,
 				param.T1 - 2 * param.E1
 			)
-		);
+		]);
 		figTop.addDynamics(ctrRectRot(-param.W1 / 2, 0, param.W1, param.T1, aDyn));
 		figTop.addDynamics(
 			ctrRectRot(
@@ -133,7 +134,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			.addSegStrokeRP(-roof_angle, roofInnerLength)
 			.addSegStrokeRP(Math.PI / 2 - roof_angle, param.E2)
 			.closeSegStroke();
-		figFace.addMain(ctrRoof);
+		figFace.addMainO(ctrRoof);
 		figFace.addSecond(ctrRectangle(-param.W1 / 2, 0, param.W1, param.H1));
 		figFace.addSecond(
 			ctrRectangle(-param.W1 / 2 + param.E1, 0, param.W1 - 2 * param.E1, param.H1)

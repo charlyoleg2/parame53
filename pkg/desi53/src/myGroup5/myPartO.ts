@@ -4,6 +4,7 @@
 // step-1 : import from geometrix
 import type {
 	//tContour,
+	//tOuterInner,
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -90,7 +91,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			.addPointA(0, 0)
 			.addSegArc3(Math.PI + a1, true);
 		//ctrBubble.closeSegStroke();
-		fig1.addMain(ctrBubble);
+		fig1.addMainO(ctrBubble);
 		// final figure list
 		rGeome.fig = {
 			face1: fig1

@@ -4,6 +4,7 @@
 // step-1 : import from geometrix
 import type {
 	//tContour,
+	//tOuterInner
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -112,7 +113,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			.addPointA(-param.B1 / 2, 0)
 			.addSegArc3(a1c, false)
 			.closeSegStroke();
-		figDress.addMain(ctrDress);
+		figDress.addMainO(ctrDress);
 		// figShort
 		const sp1 = point(param.S1 / 2, 0);
 		const sp2 = sp1.translatePolar(degToRad(-80), param.S3);
@@ -128,7 +129,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			.addSegStrokeA(sp2b.cx, sp2b.cy)
 			.addSegStrokeA(sp1b.cx, sp1b.cy)
 			.closeSegStroke();
-		figShort.addMain(ctrShort);
+		figShort.addMainO(ctrShort);
 		// final figure list
 		rGeome.fig = {
 			faceDress: figDress,

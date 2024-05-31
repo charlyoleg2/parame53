@@ -4,6 +4,7 @@
 // step-1 : import from geometrix
 import type {
 	//tContour,
+	//tOuterInner,
 	tParamDef,
 	tParamVal,
 	tGeom,
@@ -79,8 +80,7 @@ function pGeom(t: number, param: tParamVal, suffix = ''): tGeom {
 			.addSegStrokeA(0, -R1)
 			.addCornerRounded(param.R2)
 			.closeSegStroke();
-		fig1.addMain(contourCircle(0, 0, R1));
-		fig1.addMain(ctrLosange);
+		fig1.addMainOI([contourCircle(0, 0, R1), ctrLosange]);
 		// second contours
 		fig1.addSecond(contourCircle(x2, 0, R1));
 		fig1.addSecond(ctrLosange.translate(x2, 0));
