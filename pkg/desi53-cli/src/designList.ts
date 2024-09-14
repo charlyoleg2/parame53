@@ -9,10 +9,10 @@ const designList: tAllPageDef = {
 	'desi53/myPartP': myPartPDef,
 	'desi53/myPartQ': myPartQDef,
 	'desi53/myPartR': myPartRDef,
-	'desi53/myPartS': myPartSDef,
-	'desi53/myPartT': myPartTDef,
-	'desi53/myPartU': myPartUDef,
-	'desi53/myPartV': myPartVDef,
+	'desi53b/myPartS': myPartSDef,
+	'desi53b/myPartT': myPartTDef,
+	'desi53b/myPartU': myPartUDef,
+	'desi53b/myPartV': myPartVDef,
 	'desi53b/myPartODeW': myPartWDef
 };
 

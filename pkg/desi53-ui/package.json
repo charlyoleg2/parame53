@@ -17,7 +17,9 @@
 	],
 	"type": "module",
 	"scripts": {
-		"cp_pgdsvg": "shx cp -r ../../node_modules/desi53/dist/pgdsvg static/",
+		"cp_pgdsvg_a": "shx cp -r ../../node_modules/desi53/dist/pgdsvg static/",
+		"cp_pgdsvg_b": "shx cp -r ../../node_modules/desi53b/dist/pgdsvg static/",
+		"cp_pgdsvg": "run-s cp_pgdsvg_a cp_pgdsvg_b",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
