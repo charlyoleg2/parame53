@@ -5,7 +5,10 @@ Desi53b
 Presentation
 ------------
 
-*Desi53b* is design-library using [geometrix](https://www.npmjs.com/package/geometrix).
+*Desi53* is a *design library* based on [parametrix](https://charlyoleg2.github.io/parametrix/).
+
+It contains the some 3D-shapes.
+
 *Desi53b* contains designs used in the [tutorial](https://charlyoleg2.github.io/parametrix/docs/geom_tutorial) of *geometrix*.
 
 
@@ -16,6 +19,8 @@ Links
 - [sources](https://github.com/charlyoleg2/parame53) : git-repository
 - [desi53-pkg](https://www.npmjs.com/package/desi53) : desi53 as npm-package
 - [desi53b-pkg](https://www.npmjs.com/package/desi53b) : desi53b as npm-package
+- [pkg-cli](https://www.npmjs.com/package/desi53-cli) : desi53-cli as npm-package
+- [pkg-uis](https://www.npmjs.com/package/desi53-uis) : desi53-uis as npm-package
 
 
 Getting started
@@ -31,5 +36,5 @@ npm -w desi53b ci
 Dependencies
 ------------
 
-*Desi53b* runtime depends only on *Geometrix*. Use *desiXY-ui* WebUI or *desiXY-cli* CLI to visualize and export the designs in different formats like dxf, svg, gltf, stl, brep, step and others.
+*Desi53b* runtime depends only on *Geometrix*. Use *desi53-ui* WebUI or *desi53-cli* CLI to visualize and export the designs in different formats like dxf, svg, gltf, stl, brep, step and others.
 
