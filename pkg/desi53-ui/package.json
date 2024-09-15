@@ -36,8 +36,8 @@
 	"dependencies": {
 		"desi53": "^0.5.6",
 		"desi53b": "^0.5.5",
-		"geometrix": "^0.5.48",
-		"geomui": "^0.5.50"
+		"geometrix": "^0.5.49",
+		"geomui": "^0.5.51"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.2.4",
