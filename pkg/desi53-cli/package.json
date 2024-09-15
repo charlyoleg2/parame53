@@ -1,7 +1,7 @@
 {
 	"name": "desi53-cli",
 	"description": "The cli-frontend for desi53",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"private": false,
 	"repository": {
 		"type": "git",
