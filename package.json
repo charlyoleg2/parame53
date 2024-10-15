@@ -53,7 +53,7 @@
 		"ci2": "run-s desi53:ci desi53b:ci desi53-ui:ci",
 		"ci3": "run-s desi53:ci desi53b:ci desi53-cli:ci",
 		"svgo": "run-s desi53:svgo desi53b:svgo",
-		"clean-root": "shx rm -fr tmp output output2",
+		"clean-root": "rimraf tmp output output2",
 		"clean": "run-s clean-root desi53:clean desi53b:clean desi53-ui:clean desi53-cli:clean desi53-uis:clean",
 		"preview": "run-s desi53-ui:preview",
 		"run-uis": "run-s desi53-uis:run",
@@ -64,6 +64,6 @@
 	},
 	"devDependencies": {
 		"npm-run-all": "^4.1.5",
-		"shx": "^0.3.4"
+		"rimraf": "^6.0.1"
 	}
 }
