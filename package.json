@@ -59,7 +59,7 @@
 		"run-uis": "run-s desi53-uis:run",
 		"run-cli": "run-s desi53-cli:run",
 		"versions": "run-s desi53:version desi53b:version desi53-ui:version desi53-cli:version desi53-uis:version",
-		"gh-publish": "run-s desi53:publish desi53b:publish",
+		"gh-publish": "run-s desi53:publish desi53b:publish desi53-cli:publish desi53-uis:publish",
 		"ls-workspaces": "npm -ws exec -c pwd"
 	},
 	"devDependencies": {
