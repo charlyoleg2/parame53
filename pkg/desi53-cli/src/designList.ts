@@ -13,7 +13,7 @@ const designList: tAllPageDef = {
 	'desi53b/myPartT': myPartTDef,
 	'desi53b/myPartU': myPartUDef,
 	'desi53b/myPartV': myPartVDef,
-	'desi53b/myPartODeW': myPartWDef
+	'desi53b/myPartW': myPartWDef
 };
 
 export { designList };
