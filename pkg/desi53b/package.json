@@ -57,7 +57,7 @@
 		"clean": "rimraf dist dist2 node_modules"
 	},
 	"dependencies": {
-		"desi51": "^0.5.21",
+		"desi51": "^0.5.22",
 		"geometrix": "^0.5.57"
 	},
 	"devDependencies": {

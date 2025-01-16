@@ -57,8 +57,8 @@
 		"clean": "rimraf build dist node_modules"
 	},
 	"dependencies": {
-		"desi53": "^0.5.8",
-		"desi53b": "^0.5.7",
+		"desi53": "^0.5.9",
+		"desi53b": "^0.5.8",
 		"geomcli": "^0.5.60",
 		"geometrix": "^0.5.57"
 	},

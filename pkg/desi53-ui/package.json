@@ -34,8 +34,8 @@
 		"clean": "rimraf .svelte-kit build node_modules static/pgdsvg"
 	},
 	"dependencies": {
-		"desi53": "^0.5.8",
-		"desi53b": "^0.5.7",
+		"desi53": "^0.5.9",
+		"desi53b": "^0.5.8",
 		"geometrix": "^0.5.57",
 		"geomui": "^0.5.59"
 	},
