@@ -57,10 +57,10 @@
 		"clean": "rimraf build dist node_modules"
 	},
 	"dependencies": {
-		"desi53": "^0.5.9",
-		"desi53b": "^0.5.8",
-		"geomcli": "^0.5.60",
-		"geometrix": "^0.5.57"
+		"desi53": "^0.5.10",
+		"desi53b": "^0.5.9",
+		"geomcli": "^0.5.62",
+		"geometrix": "^0.5.59"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.10.0",
@@ -74,6 +74,6 @@
 		"tsup": "^8.3.5",
 		"typescript": "^5.7.3",
 		"typescript-eslint": "^8.20.0",
-		"vitest": "2.1.6"
+		"vitest": "^3.0.2"
 	}
 }
