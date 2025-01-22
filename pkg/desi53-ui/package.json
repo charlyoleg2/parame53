@@ -20,6 +20,7 @@
 		"cp_pgdsvg_a": "fse copy ../../node_modules/desi53/dist/pgdsvg static/pgdsvg",
 		"cp_pgdsvg_b": "fse copy ../../node_modules/desi53b/dist/pgdsvg static/pgdsvg",
 		"cp_pgdsvg": "run-s cp_pgdsvg_a cp_pgdsvg_b",
+		"prebuild": "svelte-kit sync",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
